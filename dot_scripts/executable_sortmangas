@@ -1,0 +1,2 @@
+#!/bin/zsh
+rename -v --counter-format "001" -X -e '$_="$N"' ./**/*.(jpg|png|jpeg)

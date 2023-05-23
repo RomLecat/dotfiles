@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+
+from osc_sdk_python import Gateway
+import sys
+from requests.exceptions import HTTPError
+from base64 import b64decode
+
+if __name__ == '__main__':
+    gw = Gateway()
+
+    vm_id = str(sys.argv[1])
+
+    try: 
+        gw.ReadVms(
+            Filters={ "VmIds": [vm_id] }
+        )
+    except HTTPError:
+        for vm in gw.ReadVms()["Vms"]:
+            if 'PublicIp' in vm.keys() and vm["PublicIp"] == vm_id:
+                vm_id = vm["VmId"]
+            else:
+                for tag in vm['Tags']:
+                    if tag['Key'] != 'Name':
+                        continue
+                    if tag['Value'] == vm_id:
+                        vm_id = vm['VmId']
+                        break
+
+    console = gw.ReadConsoleOutput(
+        VmId = vm_id
+    )['ConsoleOutput']
+    
+    print(
+        b64decode(console).decode('utf-8')
+    )
