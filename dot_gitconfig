@@ -1,0 +1,25 @@
+# This is Git's per-user configuration file.
+[user]
+    name = Romain Lecat
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIHUHY1y5OnlbH0NiWu2sp4d1b8Oe8RqbseX0BgmvzK6
+[push]
+    default = simple
+[color]
+    ui = true
+[commit]
+    gpgsign = true
+[core]
+    mergeoptions = --no-edit
+[init]
+    defaultBranch = master
+[pull]
+    rebase = true
+[gpg]
+    format = ssh
+
+[includeIf "gitdir:~/Torque/"]
+    path = .gitconfig-perso
+[includeIf "gitdir:~/.local/share/chezmoi"]
+    path = .gitconfig-perso
+[includeIf "gitdir:~/Outscale/"]
+    path = .gitconfig-osc
