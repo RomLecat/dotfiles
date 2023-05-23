@@ -1,0 +1,31 @@
+apiVersion: v1
+clusters:
+  - name: lct1
+    cluster:
+      certificate-authority-data: {{ (bitwardenFields "item" "K8s LCT1").ca.value }}
+      server: https://k8s-master-1.internal.lct1.lecat.network:6443
+  - name: osc-eu1
+    cluster:
+      certificate-authority-data: {{ (bitwardenFields "item" "K8s OSC-EU1").ca.value }}
+      server: https://k8s-master-1.internal.osc-eu1.lecat.network:6443
+contexts:
+  - name: lct1
+    context:
+      cluster: lct1
+      user: lct1
+  - name: osc-eu1
+    context:
+      cluster: osc-eu1
+      user: osc-eu1
+current-context: lct1
+kind: Config
+preferences: {}
+users:
+  - name: lct1
+    user:
+      client-certificate-data: {{ (bitwardenFields "item" "K8s LCT1").certificate.value }}
+      client-key-data: {{ (bitwardenFields "item" "K8s LCT1").key.value }}
+  - name: osc-eu1
+    user:
+      client-certificate-data: {{ (bitwardenFields "item" "K8s OSC-EU1").ca.value }}
+      client-key-data: {{ (bitwardenFields "item" "K8s OSC-EU1").key.value }}
