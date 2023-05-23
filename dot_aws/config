@@ -1,0 +1,17 @@
+[profile euw2]
+region=eu-west-2
+
+[profile euw2-ia]
+region=eu-west-2
+
+[profile use2]
+region=us-east-2
+
+[profile usw1]
+region=us-west-1
+
+[profile apn1]
+region=ap-northeast-1
+
+[profile sec1]
+region=cloudgouv-eu-west-1
