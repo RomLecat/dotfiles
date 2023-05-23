@@ -1,0 +1,116 @@
+# -- OVERRIDES
+Host *
+	CanonicalizeHostname always
+	CanonicalDomains admin
+	CanonicalizeMaxDots 1
+
+Host *-adm*.admin *-adm adm.*.lecat.network cfg.*.lecat.network !dshq1-*
+	ProxyJump none
+
+Host *-adm*.admin adm.*.lecat.network cfg.*.lecat.network cfg.internal.lct1.lecat.network stor-utils.internal.lct1.lecat.network zabbix-proxy-vm.internal.lct1.lecat.network
+	ForwardAgent yes
+
+Host rt* rr* fw* gw* sw-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw-*
+	User admin
+	ProxyJump none
+	HostKeyAlgorithms +ssh-rsa
+	PubkeyAcceptedKeyTypes +ssh-rsa
+	KexAlgorithms +diffie-hellman-group14-sha1
+
+# -- TORQUE
+Host *.lct1.lecat.network *.internal.lecat.pro !adm.internal.lct1.lecat.network !cfg.internal.lct1.lecat.network
+	ProxyJump adm.internal.lct1.lecat.network
+
+Host *.osc-eu1.lecat.network *.osc-eu2.lecat.network *.osc-eu4.lecat.network !adm.internal.osc-eu1.lecat.network
+	ProxyJump adm.internal.osc-eu1.lecat.network
+
+Host *.osc-eu3.lecat.network !adm.internal.osc-eu3.lecat.network
+	ProxyJump adm.internal.osc-eu3.lecat.network
+
+Host *.osc-us1.lecat.network !adm.internal.osc-us1.lecat.network
+	ProxyJump adm.internal.osc-us1.lecat.network
+
+Host *.osc-us2.lecat.network !adm.internal.osc-us2.lecat.network
+	ProxyJump adm.internal.osc-us2.lecat.network
+
+Host *.osc-jp1.lecat.network !adm.internal.osc-jp1.lecat.network
+	ProxyJump adm.internal.osc-jp1.lecat.network
+
+Host sw-*.lecat.network ap-*.lecat.network fw*.lecat.network gw*.lecat.network rt*.lecat.network rr*.lecat.network
+	IdentityFile ~/.ssh/id_rsa_fw
+
+Host hv*.internal.lct1.lecat.network vcenter*.internal.lct1.lecat.network
+	User root
+
+Host *.lecat.pro *.lecat.network
+	User romain
+
+# -- WORK
+Match exec "echo %h | grep -Eq '^(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
+	User romain.lecat
+
+Host par1-* !par1-balabit-*.admin !par1-ops-*.admin !par1-cloud-zabbix-*.admin !par1-adm01.admin
+	ProxyJump par1-adm01.admin
+
+Host par1-cloud-zabbix-*.admin par4-cloud-zabbix-*.admin !par1-cloud-zabbix-adm-1.admin
+	ProxyJump par1-cloud-zabbix-adm-1.admin
+
+Host par4-*
+	ProxyJump par4-adm.admin
+
+Host sv1-* sv2-*
+	ProxyJump sv1-adm.admin
+
+Host nj1-*
+	ProxyJump nj1-adm.admin
+
+Host nj2-*
+	ProxyJump nj2-adm.admin
+
+Host jpn1-*
+	ProxyJump jpn1-adm.admin
+
+Host jpn2-*
+	ProxyJump jpn2-adm.admin
+
+Host dshq1-* !dshq1-adm-2.admin
+	ProxyJump dshq1-adm-2.admin,dshq1-adm.admin
+
+Host ja1-*
+	ProxyJump ja1-adm.admin
+
+Host dv1-* dv2-*
+	ProxyJump dv1-adm.admin
+
+Host in1-*
+	ProxyJump in1-adm.admin
+
+Host in2-*
+	ProxyJump in2-adm.admin
+
+Host top1-*
+	ProxyJump top1-adm.admin
+
+Host eng1-*
+	ProxyJump eng1-adm.admin
+
+Host vpc-* vgw-* subnet-* lbu-*
+	User romain.lecat
+	ProxyJump par1-adm.admin
+	Hostname par1-pr-intel-main-1.admin
+	RequestTTY yes
+	RemoteCommand sudo /usr/local/outscale/scripts/connect_fw.py --fw %n
+
+# -- GENERIC
+Host 10.* 172.16.* 192.168.* 198.* *.local
+	UserKnownHostsFile /dev/null
+	LogLevel QUIET
+
+Host *
+	UpdateHostKeys yes
+	StrictHostKeyChecking no
+	HashKnownHosts no
+	IdentitiesOnly yes
+	UseKeychain yes
+	IdentityFile ~/.ssh/id_ed25519
+	AddKeysToAgent yes
