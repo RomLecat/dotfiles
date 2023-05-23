@@ -1,0 +1,5 @@
+{
+  "ca-url": "https://acme.service.discovery.lecat.network",
+  "redirect-url": "",
+  "root": "/Users/romain/.step/root_ca.crt"
+}
