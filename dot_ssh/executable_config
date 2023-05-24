@@ -10,7 +10,7 @@ Host *-adm*.admin *-adm adm.*.lecat.network cfg.*.lecat.network !dshq1-*
 Host *-adm*.admin adm.*.lecat.network cfg.*.lecat.network cfg.internal.lct1.lecat.network stor-utils.internal.lct1.lecat.network zabbix-proxy-vm.internal.lct1.lecat.network
 	ForwardAgent yes
 
-Host rt* rr* fw* gw* sw-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw-*
+Host rt* rr* fw* gw* sw-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw*
 	User admin
 	ProxyJump none
 	HostKeyAlgorithms +ssh-rsa
