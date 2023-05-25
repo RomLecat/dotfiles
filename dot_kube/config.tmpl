@@ -27,5 +27,5 @@ users:
       client-key-data: {{ (bitwardenFields "item" "K8s LCT1").key.value }}
   - name: osc-eu1
     user:
-      client-certificate-data: {{ (bitwardenFields "item" "K8s OSC-EU1").ca.value }}
+      client-certificate-data: {{ (bitwardenFields "item" "K8s OSC-EU1").certificate.value }}
       client-key-data: {{ (bitwardenFields "item" "K8s OSC-EU1").key.value }}
