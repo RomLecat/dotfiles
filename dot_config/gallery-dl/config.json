@@ -1,0 +1,9 @@
+{
+    "extractor": {
+        "base-directory": ".",
+        "instagram": {
+            "directory": { "": [] },
+            "cookies": ["chrome"]
+        }
+    }
+}
