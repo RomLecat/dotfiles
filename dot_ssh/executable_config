@@ -10,12 +10,13 @@ Host *-adm*.admin *-adm adm.*.lecat.network cfg.*.lecat.network !dshq1-*
 Host *-adm*.admin adm.*.lecat.network cfg.*.lecat.network cfg.internal.lct1.lecat.network stor-utils.internal.lct1.lecat.network zabbix-proxy-vm.internal.lct1.lecat.network
 	ForwardAgent yes
 
-Host rt* rr* fw* gw* sw-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw*
+Host rt* rr* fw* gw* sw-* pdu-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw*
 	User admin
 	ProxyJump none
+	Ciphers +aes256-cbc
 	HostKeyAlgorithms +ssh-rsa
 	PubkeyAcceptedKeyTypes +ssh-rsa
-	KexAlgorithms +diffie-hellman-group14-sha1
+	KexAlgorithms +diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 
 # -- TORQUE
 Host *.lct1.lecat.network *.internal.lecat.pro !adm.internal.lct1.lecat.network !cfg.internal.lct1.lecat.network
@@ -48,6 +49,7 @@ Host *.lecat.pro *.lecat.network
 # -- WORK
 Match exec "echo %h | grep -Eq '^(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
 	User romain.lecat
+	HostKeyAlgorithms +ssh-rsa
 
 Host par1-* !par1-balabit-*.admin !par1-ops-*.admin !par1-cloud-zabbix-*.admin !par1-adm01.admin
 	ProxyJump par1-adm01.admin
