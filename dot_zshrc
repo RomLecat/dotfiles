@@ -97,7 +97,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # PATH config
-export PATH=/usr/local/sbin:$PATH:~/.scripts/
+export PATH=$PATH:~/.scripts/:~/.local/bin:/usr/local/sbin
 [ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:$PATH
 [ -d ~/Library/Python/3.7/bin ] && export PATH=$PATH:~/Library/Python/3.7/bin
 [ -d ~/Library/Python/3.8/bin ] && export PATH=$PATH:~/Library/Python/3.8/bin
@@ -207,3 +207,4 @@ def
 set -o allexport
 [ -r ~/.config/credentials ] && source ~/.config/credentials
 set +o allexport
+
