@@ -1,9 +1,12 @@
 {
     "extractor": {
         "base-directory": ".",
+        "cookies": ["chrome", "Profile 2"],
         "instagram": {
-            "directory": { "": [] },
-            "cookies": ["chrome", "Profile 2"]
+            "directory": { "": [] }
+        },
+        "fantia": {
+            "directory": [""]
         }
     }
 }
