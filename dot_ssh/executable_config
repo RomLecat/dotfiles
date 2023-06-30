@@ -10,12 +10,12 @@ Host *-adm*.admin *-adm adm.*.lecat.network cfg.*.lecat.network !dshq1-*
 Host *-adm*.admin adm.*.lecat.network cfg.*.lecat.network cfg.internal.lct1.lecat.network stor-utils.internal.lct1.lecat.network zabbix-proxy-vm.internal.lct1.lecat.network
 	ForwardAgent yes
 
-Host rt* rr* fw* gw* sw-* pdu-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw* !rt-vpn-*
+Host rt* rr* fw* gw* sw-* pdu-* *-core* *-spine-* *-distri* *-swadm-* *-juni-* *-rr *-dconnect-* *-ncs-* *-vizion-* *-asr-* *-fw* !rt-vpn-* !rt-edge-* !rt-peering.*
 	User admin
 	ProxyJump none
 	Ciphers +aes256-cbc
-	HostKeyAlgorithms +ssh-rsa
-	PubkeyAcceptedKeyTypes +ssh-rsa
+	HostKeyAlgorithms +rsa-sha2-512,ssh-rsa
+	PubkeyAcceptedKeyTypes +rsa-sha2-512,ssh-rsa
 	KexAlgorithms +diffie-hellman-group14-sha1,diffie-hellman-group1-sha1
 
 # -- TORQUE
