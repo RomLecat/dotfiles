@@ -1,5 +1,9 @@
 apiVersion: v1
 clusters:
+  - name: mgmt-lct1
+    cluster:
+      certificate-authority-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").ca.value }}
+      server: https://k8s-mgmt-master-1.internal.lct1.lecat.network:6443
   - name: lct1
     cluster:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s LCT1").ca.value }}
@@ -9,6 +13,10 @@ clusters:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s OSC-EU1").ca.value }}
       server: https://k8s-master-1.internal.osc-eu1.lecat.network:6443
 contexts:
+  - name: mgmt-lct1
+    context:
+      cluster: mgmt-lct1
+      user: mgmt-lct1
   - name: lct1
     context:
       cluster: lct1
@@ -21,6 +29,10 @@ current-context: lct1
 kind: Config
 preferences: {}
 users:
+  - name: mgmt-lct1
+    user:
+      client-certificate-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").certificate.value }}
+      client-key-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").key.value }}
   - name: lct1
     user:
       client-certificate-data: {{ (bitwardenFields "item" "K8s LCT1").certificate.value }}
