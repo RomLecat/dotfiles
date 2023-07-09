@@ -99,9 +99,6 @@ source $ZSH/oh-my-zsh.sh
 # PATH config
 export PATH=$PATH:~/.scripts/:~/.local/bin:/usr/local/sbin
 [ -d /opt/homebrew/bin ] && export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:$PATH
-[ -d ~/Library/Python/3.7/bin ] && export PATH=$PATH:~/Library/Python/3.7/bin
-[ -d ~/Library/Python/3.8/bin ] && export PATH=$PATH:~/Library/Python/3.8/bin
-[ -d ~/Library/Python/3.9/bin ] && export PATH=$PATH:~/Library/Python/3.9/bin
 
 # Powerlevel10k style
 POWERLEVEL9K_MODE=nerdfont-complete
@@ -122,7 +119,7 @@ def() {
     export POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(terraform virtualenv)
     export POWERLEVEL9K_AWS_SHOW_ON_COMMAND='aws|osc|s3cmd|terraform|packer|osc-cli|oapi-cli'
     export POWERLEVEL9K_AWS_ICON='\uf0c2 '
-    export POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|calicoctl|cilium'
+    export POWERLEVEL9K_KUBECONTEXT_SHOW_ON_COMMAND='kubectl|calicoctl|cilium|velero'
     export POWERLEVEL9K_CUSTOM_ENV_FOREGROUND="white"
     export POWERLEVEL9K_CUSTOM_ENV_CONTENT_EXPANSION='%f%B${P9K_CONTENT}'
     export POWERLEVEL9K_CUSTOM_ENV_BACKGROUND="darkred"
@@ -192,8 +189,9 @@ if [[ $#h -gt 0 ]]; then
     zstyle ':completion:*:slogin:*' hosts $h
 fi
 
-# oAPI-cli Completion
-source /opt/homebrew/Cellar/oapi-cli/0.0.0/contrib/completions/zsh/oapi-cli-completion.zsh
+# Auto Completions
+[ -r /opt/homebrew/Cellar/oapi-cli/0.0.0/contrib/completions/zsh/oapi-cli-completion.zsh ] && source /opt/homebrew/Cellar/oapi-cli/0.0.0/contrib/completions/zsh/oapi-cli-completion.zsh
+[ -r /opt/homebrew/bin/velero ] && source <(velero completion zsh)
 
 # Tmux
 if [ -z ${TMUX} ] && [ "${TERM_PROGRAM}" = "iTerm.app" ]; then
