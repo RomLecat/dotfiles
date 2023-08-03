@@ -10,7 +10,7 @@
     gpgsign = true
 [core]
     mergeoptions = --no-edit
-	excludesfile = /Users/romain/.gitignore
+	excludesfile = ~/.gitignore
 [init]
     defaultBranch = master
 [pull]
