@@ -9,7 +9,7 @@ ls-vm=ec2 describe-instances \
     --output table
 # List all your volumes
 ls-volumes=ec2 describe-volumes \
-    --query 'Volumes[].{VolumeId: VolumeId,State: State,Size: Size,Name: Tags[0].Value,AZ: AvailabilityZone}' \
+    --query 'Volumes[].{VolumeId: VolumeId,State: State,Size: Size,Name: Tags[0].Value,InstanceId: Attachments[0].InstanceId,AZ: AvailabilityZone}' \
     --output table
 # List all your images
 ls-ami=ec2 describe-images \
