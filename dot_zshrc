@@ -167,6 +167,9 @@ vmware() {
     source ~/.govmomi/$1.env
 }
 
+# BGPTools CWhois
+function cwhois { whois -h bgp.tools " -v $*"; }
+
 # iTerm Fixes
 export TERM=xterm-256color
 
