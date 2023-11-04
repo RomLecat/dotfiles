@@ -50,6 +50,7 @@ Host *.lecat.pro *.lecat.network
 Match exec "echo %h | grep -Eq '^(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
 	User romain.lecat
 	HostKeyAlgorithms +ssh-rsa
+	PubkeyAcceptedKeyTypes +ssh-rsa
 
 Host par1-* !par1-balabit-*.admin !par1-ops-*.admin !par1-cloud-zabbix-*.admin !par1-adm01.admin
 	ProxyJump par1-adm01.admin
@@ -96,6 +97,20 @@ Host top1-*
 Host eng1-*
 	ProxyJump eng1-adm.admin
 
+Host sec*-*
+	ForwardAgent yes
+	IdentityFile ~/.ssh/id_rsa_snc
+	AddKeysToAgent yes
+	Hostname 172.30.3.47
+	IdentitiesOnly yes
+	PubkeyAcceptedKeyTypes +ssh-rsa
+
+Host sec1-adm
+	User romain.lecat@172.30.3.1
+
+Host sec2-adm
+	User romain.lecat@172.30.34.1
+
 Host vpc-* vgw-* subnet-* lbu-*
 	User romain.lecat
 	ProxyJump par1-adm.admin
@@ -108,7 +123,7 @@ Host 10.* 172.16.* 192.168.* 198.* *.local
 	UserKnownHostsFile /dev/null
 	LogLevel QUIET
 
-Host *
+Host * !sec1-*
 	UpdateHostKeys yes
 	StrictHostKeyChecking no
 	HashKnownHosts no

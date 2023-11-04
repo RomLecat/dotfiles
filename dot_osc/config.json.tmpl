@@ -61,5 +61,15 @@
         "method": "POST",
         "region_name": "cloudgouv-eu-west-1",
         "region": "cloudgouv-eu-west-1"
+    },
+    "euw2-ops": {
+        "access_key": "{{ (bitwardenFields "item" "Outscale Ops EUW2").access_key.value }}",
+        "secret_key": "{{ (bitwardenFields "item" "Outscale Ops EUW2").secret_key.value }}",
+        "host": "outscale.com",
+        "https": true,
+        "method": "POST",
+        "region_name": "eu-west-2",
+        "region": "eu-west-2",
+        "client_certificate": "~/.osc/certificate.pem"
     }
 }
