@@ -170,8 +170,11 @@ vmware() {
 # BGPTools CWhois
 function cwhois { whois -h bgp.tools " -v $*"; }
 
-# iTerm Fixes
+# iTerm fixes
 export TERM=xterm-256color
+
+# Bitwarden-cli fix
+export NODE_OPTIONS="--no-deprecationexport"
 
 # GPG
 export GPG_TTY=$(tty)
