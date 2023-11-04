@@ -174,7 +174,7 @@ function cwhois { whois -h bgp.tools " -v $*"; }
 export TERM=xterm-256color
 
 # Bitwarden-cli fix
-export NODE_OPTIONS="--no-deprecationexport"
+export NODE_OPTIONS="--no-deprecation"
 
 # GPG
 export GPG_TTY=$(tty)
