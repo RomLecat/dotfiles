@@ -71,5 +71,14 @@
         "region_name": "eu-west-2",
         "region": "eu-west-2",
         "client_certificate": "~/.osc/certificate.pem"
+    },
+    "use2-ops": {
+        "access_key": "{{ (bitwardenFields "item" "Outscale Ops USE2").access_key.value }}",
+        "secret_key": "{{ (bitwardenFields "item" "Outscale Ops USE2").secret_key.value }}",
+        "host": "outscale.com",
+        "https": true,
+        "method": "POST",
+        "region_name": "us-east-2",
+        "region": "us-east-2"
     }
 }
