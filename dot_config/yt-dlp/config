@@ -1,2 +1,5 @@
 # Grab cookies
 --cookies-from-browser chrome
+
+# Grab 1080p premium on YouTube
+--extractor-args "youtube:player_client=default,ios"
