@@ -204,7 +204,7 @@ if [[ $#h -gt 0 ]]; then
 fi
 
 # Auto Completions
-[ -r /opt/homebrew/Cellar/oapi-cli/0.0.0/contrib/completions/zsh/oapi-cli-completion.zsh ] && source /opt/homebrew/Cellar/oapi-cli/0.0.0/contrib/completions/zsh/oapi-cli-completion.zsh
+[ -r /opt/homebrew/Cellar/oapi-cli/*/contrib/completions/zsh/oapi-cli-completion.zsh ] && source /opt/homebrew/Cellar/oapi-cli/*/contrib/completions/zsh/oapi-cli-completion.zsh
 [ -r /opt/homebrew/bin/velero ] && source <(velero completion zsh)
 
 # Tmux
