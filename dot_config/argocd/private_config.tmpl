@@ -1,0 +1,12 @@
+contexts:
+- name: argocd.internal.lct1.lecat.network:443
+  server: argocd.internal.lct1.lecat.network:443
+  user: argocd.internal.lct1.lecat.network:443
+current-context: argocd.internal.lct1.lecat.network:443
+servers:
+- grpc-web-root-path: ""
+  grpc-web: true
+  server: argocd.internal.lct1.lecat.network:443
+users:
+- auth-token: {{ (bitwardenFields "item" "ArgoCD").Token.value }}
+  name: argocd.internal.lct1.lecat.network:443
