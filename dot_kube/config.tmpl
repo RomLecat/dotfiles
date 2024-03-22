@@ -3,7 +3,7 @@ clusters:
   - name: mgmt-lct1
     cluster:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").ca.value }}
-      server: https://k8s-mgmt-master-1.internal.lct1.lecat.network:6443
+      server: https://k8s-mgmt.internal.lct1.lecat.network:6443
   - name: lct1
     cluster:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s LCT1").ca.value }}
