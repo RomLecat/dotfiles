@@ -22,8 +22,11 @@ Host rt* rr* fw* gw* sw-* pdu-* *-core* *-router-* *-spine-* *-distri* *-swadm-*
 Host *.lct1.lecat.network *.internal.lecat.pro !adm.internal.lct1.lecat.network !cfg.internal.lct1.lecat.network !*.lan.lct1.lecat.network
 	ProxyJump adm.internal.lct1.lecat.network
 
-Host *.osc-eu1.lecat.network *.osc-eu2.lecat.network *.osc-eu4.lecat.network !adm.internal.osc-eu1.lecat.network
+Host *.osc-eu1.lecat.network !adm.internal.osc-eu1.lecat.network
 	ProxyJump adm.internal.osc-eu1.lecat.network
+
+Host *.osc-eu2.lecat.network !adm.internal.osc-eu2.lecat.network
+	ProxyJump adm.internal.osc-eu2.lecat.network
 
 Host *.osc-eu3.lecat.network !adm.internal.osc-eu3.lecat.network
 	ProxyJump adm.internal.osc-eu3.lecat.network
