@@ -4,6 +4,10 @@ clusters:
     cluster:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").ca.value }}
       server: https://k8s-mgmt.internal.lct1.lecat.network:6443
+  - name: prd-lct1
+    cluster:
+      certificate-authority-data: {{ (bitwardenFields "item" "K8s PRD LCT1").ca.value }}
+      server: https://k8s-prd.internal.lct1.lecat.network:6443
   - name: lct1
     cluster:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s LCT1").ca.value }}
@@ -17,6 +21,10 @@ contexts:
     context:
       cluster: mgmt-lct1
       user: mgmt-lct1
+  - name: prd-lct1
+    context:
+      cluster: prd-lct1
+      user: prd-lct1
   - name: lct1
     context:
       cluster: lct1
@@ -33,6 +41,10 @@ users:
     user:
       client-certificate-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").certificate.value }}
       client-key-data: {{ (bitwardenFields "item" "K8s MGMT-LCT1").key.value }}
+  - name: prd-lct1
+    user:
+      client-certificate-data: {{ (bitwardenFields "item" "K8s PRD LCT1").certificate.value }}
+      client-key-data: {{ (bitwardenFields "item" "K8s PRD LCT1").key.value }}
   - name: lct1
     user:
       client-certificate-data: {{ (bitwardenFields "item" "K8s LCT1").certificate.value }}
