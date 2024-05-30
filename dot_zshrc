@@ -126,6 +126,7 @@ def() {
     export POWERLEVEL9K_OS_ICON_FOREGROUND=black
     export POWERLEVEL9K_OS_ICON_BACKGROUND=white
     osc euw2
+    vmware lct1
     credentials ${funcstack[1]}
 }
 work() {
@@ -213,3 +214,6 @@ fi
 
 # Default env
 def
+
+# Static env
+OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
