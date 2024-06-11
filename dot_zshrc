@@ -206,6 +206,7 @@ fi
 # Auto Completions
 [ -r /opt/homebrew/Cellar/oapi-cli/*/contrib/completions/zsh/oapi-cli-completion.zsh ] && source /opt/homebrew/Cellar/oapi-cli/*/contrib/completions/zsh/oapi-cli-completion.zsh
 [ -r /opt/homebrew/bin/velero ] && source <(velero completion zsh)
+[ -r /opt/homebrew/bin/kubectl ] && source <(kubectl completion zsh)
 
 # Tmux
 if [ -z ${TMUX} ] && [ "${TERM_PROGRAM}" = "iTerm.app" ]; then
