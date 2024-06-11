@@ -106,6 +106,7 @@ POWERLEVEL9K_MODE=nerdfont-complete
 # Aliases
 alias unzip='7zz x'
 alias 7z=7zz
+alias k=kubectl
 
 # Environments
 def() {
