@@ -43,7 +43,7 @@ Host *.osc-jp1.lecat.network !adm.internal.osc-jp1.lecat.network
 Host sw-*.lecat.network ap-*.lecat.network fw*.lecat.network gw*.lecat.network rt*.lecat.network rr*.lecat.network
 	IdentityFile ~/.ssh/id_rsa_fw
 
-Host hv*.internal.lct1.lecat.network vcenter*.internal.lct1.lecat.network *-vcenter* *-vmware-*
+Host pve*.internal.*.lecat.network *-vcenter* *-vmware-*
 	User root
 
 Host *.lecat.pro *.lecat.network
