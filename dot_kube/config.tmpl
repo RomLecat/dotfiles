@@ -16,10 +16,10 @@ clusters:
     cluster:
       certificate-authority-data: {{ (bitwardenFields "item" "K8s OSC-EU1").ca.value }}
       server: https://k8s.internal.osc-eu1.lecat.network:6443
-  - name: osc-eu2
+  - name: prd-osc-eu1
     cluster:
-      certificate-authority-data: {{ (bitwardenFields "item" "K8s OSC-EU2").ca.value }}
-      server: https://k8s.internal.osc-eu2.lecat.network:6443
+      certificate-authority-data: {{ (bitwardenFields "item" "K8s PRD OSC-EU1").ca.value }}
+      server: https://k8s-prd.internal.osc-eu1.lecat.network:6443
 contexts:
   - name: mgmt-lct1
     context:
@@ -37,10 +37,10 @@ contexts:
     context:
       cluster: osc-eu1
       user: osc-eu1
-  - name: osc-eu2
+  - name: prd-osc-eu1
     context:
-      cluster: osc-eu2
-      user: osc-eu2
+      cluster: prd-osc-eu1
+      user: prd-osc-eu1
 current-context: lct1
 kind: Config
 preferences: {}
@@ -61,7 +61,7 @@ users:
     user:
       client-certificate-data: {{ (bitwardenFields "item" "K8s OSC-EU1").certificate.value }}
       client-key-data: {{ (bitwardenFields "item" "K8s OSC-EU1").key.value }}
-  - name: osc-eu2
+  - name: prd-osc-eu1
     user:
-      client-certificate-data: {{ (bitwardenFields "item" "K8s OSC-EU2").certificate.value }}
-      client-key-data: {{ (bitwardenFields "item" "K8s OSC-EU2").key.value }}
+      client-certificate-data: {{ (bitwardenFields "item" "K8s PRD OSC-EU1").certificate.value }}
+      client-key-data: {{ (bitwardenFields "item" "K8s PRD OSC-EU1").key.value }}

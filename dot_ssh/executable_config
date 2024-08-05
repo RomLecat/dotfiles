@@ -50,12 +50,18 @@ Host *.lecat.pro *.lecat.network
 	User romain
 
 # -- WORK
-Match exec "echo %h | grep -Eq '^(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
+Host par1-ccc-ansible-1
+	Hostname 172.17.0.19
+
+Host par1-ccc-* !par1-ccc-ansible-1
+	ProxyJump 172.17.0.19
+
+Match exec "echo %h | grep -Eq '^(172\.17\..*)|(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
 	User romain.lecat
 	HostKeyAlgorithms +ssh-rsa
 	PubkeyAcceptedKeyTypes +ssh-rsa
 
-Host par1-* !par1-balabit-*.admin !par1-ops-*.admin !par1-cloud-zabbix-*.admin !par1-adm01.admin
+Host par1-* !par1-balabit-*.admin !par1-ops-*.admin !par1-cloud-zabbix-*.admin !par1-adm01.admin !par1-ccc-*
 	ProxyJump par1-adm01.admin
 
 Host par1-cloud-zabbix-*.admin par4-cloud-zabbix-*.admin !par1-cloud-zabbix-adm-1.admin
