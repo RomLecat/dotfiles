@@ -50,11 +50,8 @@ Host *.lecat.pro *.lecat.network
 	User romain
 
 # -- WORK
-Host par1-ccc-ansible-1
-	Hostname 172.17.0.19
-
-Host par1-ccc-* !par1-ccc-ansible-1
-	ProxyJump 172.17.0.19
+Host par1-ccc-* !par1-ccc-ansible-1.ccc.oscin.fr
+	ProxyJump par1-ccc-ansible-1.ccc.oscin.fr
 
 Match exec "echo %h | grep -Eq '^(172\.17\..*)|(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
 	User romain.lecat
