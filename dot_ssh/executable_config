@@ -45,16 +45,13 @@ Host *.lecat.pro *.lecat.network
 	User romain
 
 # -- WORK
-Match exec "echo %h | grep -Eq '^(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*'"
+Match exec "echo %h | grep -Eq '^(par|nj|sv|jpn|top|in|dv|eng|dshq|ja)[0-9]\-.*$|^172\.[0-9.]+$'"
 	User romain.lecat
 	HostKeyAlgorithms +ssh-rsa
 	PubkeyAcceptedKeyTypes +ssh-rsa
 	CanonicalizeHostname always
 	CanonicalDomains admin ccc.oscin.fr
 	CanonicalizeMaxDots 1
-
-Host par1-ccc-* !par1-ccc-ansible-1 !par1-ccc-ansible-1.ccc.oscin.fr
-    ProxyJump par1-ccc-ansible-1.ccc.oscin.fr
 
 Host par1-* !par1-balabit-*.admin !par1-ops-*.admin !par1-cloud-zabbix-*.admin !par1-adm01.admin !par1-ccc-*
 	ProxyJump par1-adm01.admin
